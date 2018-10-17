@@ -31,8 +31,8 @@
 <script>
   import wepy from 'wepy'
   import { connect } from 'wepy-redux'
-  import { INCREMENT, DECREMENT } from '../store/types/counter'
-  import { asyncInc } from '../store/actions'
+  /*import { INCREMENT, DECREMENT } from '../store/types/counter'
+  import { asyncInc } from '../store/actions'*/
 
   @connect({
     stateNum (state) {
@@ -44,7 +44,7 @@
   }, {
     incNum: 'INCREMENT',
     decNum: 'DECREMENT',
-    asyncInc
+    asyncInc:'ASYNC_INCREMENT'
   })
 
   export default class Counter extends wepy.component {

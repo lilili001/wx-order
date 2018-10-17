@@ -1,21 +1,21 @@
 import { handleActions } from 'redux-actions'
-import { INCREMENT, DECREMENT, ASYNC_INCREMENT } from '../types/counter'
+/*import { INCREMENT, DECREMENT, ASYNC_INCREMENT } from '../types/counter'*/
 
 export default handleActions({
-  ['INCREMENT'] (state,payload) {
+  ['INCREMENT'] (state) {
     return {
       ...state,
       num: state.num + 1
     }
   },
-  ['DECREMENT'] (state,payload) {
+  ['DECREMENT'] (state) {
     return {
       ...state,
       num: state.num - 1
     }
   },
-  ['ASYNC_INCREMENT'] (state, action) {
-    console.log('ASYNC_INCREMENT',state,action)
+  ['ASYNC_INCREMENT'] (state, action={type:'ASYNC_INCREMENT',payload:12}) {
+    action.payload = 1;
     return {
       ...state,
       asyncNum: state.asyncNum + action.payload
