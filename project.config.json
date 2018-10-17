@@ -1,0 +1,15 @@
+{
+	"description": "进件提报平台",
+	"setting": {
+		"urlCheck": true,
+		"es6": false,
+		"postcss": false,
+		"minified": false,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"appid": "wx2a14dfa04ea63060",
+	"projectname": "wx-order",
+	"miniprogramRoot": "dist/",
+	"condition": {}
+}

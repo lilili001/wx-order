@@ -1,0 +1,72 @@
+body{
+  background: #f7f7f8;
+}
+/**********************margins********************************/
+$mapMargins:(0,4,6,8,10,14,15,20,30,140);
+$directions:(t:top,b:bottom,l:left,r:right);
+@each $d-key,$d-value in $directions {
+  @each $style in $mapMargins {
+    .mar-#{$d-key}#{$style} {
+      margin-#{$d-value} : #{$style}px !important;
+    }
+  }
+}
+/**********************paddings********************************/
+.padding030 {
+  padding:0 30px;
+  background:#fff;
+}
+.padding1030 {
+  padding:10px 30px;
+  background:#fff;
+}
+.padding2030 {
+  padding:20px 30px;
+  background:#fff;
+}
+/**********************sizes********************************/
+$mapSizes:( 200,220,300,288,306 );
+@each $style in $mapSizes {
+  .w#{$style} {
+    width : #{$style}px !important;
+  }
+}
+.w306 {
+  display:inline-block;
+}
+.max-h300 {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+/**********************custom styles********************************/
+.layout-content {
+  min-height: 300px;
+  margin: 0 24px;
+}
+.pull-left {
+  float:left;
+}
+.pull-right {
+  float:right;
+}
+.text-right {
+  text-align:right;
+}
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.bg-white {
+  background:#fff;
+}
+.bg-shadow {
+  -webkit-box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  -moz-box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  -o-box-shadow:0 1px 4px rgba(0,0,0,.15);
+}
+.table-wrap {
+  margin-bottom:30px;
+}
