@@ -1,0 +1,151 @@
+<template>
+
+     <view class="page home">
+         <view class="toolbar">
+             <view class="search-box">
+                 <view class="search-form">
+                     <micon type="searchamagnifyingglass" class="pull-left"></micon>
+                     <view class="search-input-wrap pull-left">
+                         <input type="text" class="search-input " value="123">
+                     </view>
+
+                 </view>
+             </view>
+
+             <view class="filter-container">
+                 <view class="item">综合</view>
+                 <view class="item">销量</view>
+                 <view class="item">车价</view>
+                 <view class="item">筛选</view>
+             </view>
+
+         </view>
+
+         <view class="product-list">
+              <view class="product-item mar-t10 bg-white" wx:for="{{productList.data}}" wx:key="{{index}}">
+                    <view class="title padding10">{{item.title}}</view>
+                     <view class="description padding10">
+                         <text>客户:{{item.name}}
+                             租赁类型:{{item.rentType}}
+                             车辆:{{item.car}}
+                             经销商:{{item.saler}}
+                         </text>
+                     </view>
+              </view>
+         </view>
+     </view>
+
+</template>
+<script>
+    import wepy from 'wepy'
+    import Micon from '@/components/micon'
+    export default class Search extends wepy.page{
+        config = {
+            "usingComponents": {
+                "i-row": "../iview/row/index",
+                "i-col": "../iview/col/index",
+                "i-card": "../iview/card/index",
+                "i-input": "../iview/input/index",
+                "i-panel": "../iview/panel/index"
+            }
+        };
+        components = {
+            micon:Micon
+        };
+
+        data = {
+            productList:[]
+        };
+        methods = {
+
+        };
+
+        events = {};
+        onLoad() {
+            console.log(this.$parent.globalData);
+
+            var dev = this.$parent.globalData.dev;
+
+            var rentType = ['正租','回租'];
+            var rentType = rentType[Math.floor(Math.random()*rentType.length)];
+
+            var Mock = require('../util/mock');
+            if(dev){
+                var res = Mock.mock({
+                    'error_code':'',
+                    'error_msg':'',
+                    'data|10':[{
+                        'title': '消费贷 @ctitle(3,8)',
+                        'name':'@cname()',
+                        'rentType':rentType,
+                        'car':'车辆',
+                        'saler':'@city() @csentence(2,5) 有限公司'
+                    }]
+                });
+                this.productList = res;
+                console.log(res);
+            }else{
+                //发送请求获取数据
+                //todo
+            }
+        };
+    }
+</script>
+<style lang="scss">
+    .home{
+        .search-box{
+            padding:20rpx;
+            .search-form{
+                padding: 0 20rpx;
+                height:50rpx;
+                background:#f9f8f7;
+                border:1px solid #ddd;
+                border-radius:40rpx;
+                .m-icon-searchamagnifyingglass{
+                    font-size:30rpx;
+                    line-height:50rpx;
+                }
+
+                input{
+                    padding-left:20rpx;
+                    line-height: 50rpx!important;
+
+                    display:block;
+                    text-overflow:clip;
+                    overflow:hidden;
+                    white-space:nowrap;
+                    font-family:UICTFontTextStyleBody;
+                }
+            }
+        }
+        .filter-container{
+            background:#fff;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            border-top:1px solid #ddd;
+            border-bottom:1px solid #ddd;
+            padding:5px 0;
+            font-size:28rpx;
+            .item{
+                width:25%;
+                text-align:center
+            }
+        }
+
+        .product-list{
+            margin-top:160rpx;
+            .title{
+                border-bottom:1px solid #ddd;
+                font-size:32rpx;
+                padding-bottom: 20rpx;
+            }
+            .description{
+                font-size:28rpx;
+                color:#999
+            }
+        }
+    }
+</style>
+

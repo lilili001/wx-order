@@ -1,14 +1,20 @@
 <style lang="scss">
-.container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  box-sizing: border-box;
-}
+    page{
+        background-color: #eeeeee;
+        font-size:14px;
+    }
+    .container {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      box-sizing: border-box;
+    }
+
 @import "assets/scss/main.scss";
 </style>
+
 
 <script>
 import wepy from 'wepy'
@@ -23,23 +29,29 @@ setStore(store)
 export default class extends wepy.app {
   config = {
     pages: [
-      'pages/index'
+      'pages/index',
+      'pages/home',
+      'pages/search',
+      'pages/detail',
     ],
     window: {
       backgroundTextStyle: 'light',
-      navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
+      navigationBarBackgroundColor: '#1d86f4',
+      navigationBarTitleText: '进件提报平台',
+      navigationBarTextStyle: 'white'
+
     }
   }
 
   globalData = {
-    userInfo: null
+    userInfo: null,
+    dev:true
   }
 
   constructor () {
     super()
-    this.use('requestfix')
+    this.use('requestfix');
+
   }
 
   onLaunch() {

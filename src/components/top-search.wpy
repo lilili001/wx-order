@@ -1,0 +1,59 @@
+<template>
+    <view class="top-bar search-box">
+        <view class="s-input-tab">
+            <view class="s-input-tab-label" @tap="toggleSearchType">{{currentTab.text}}  </view>
+            <view class="s-input-tab-nav" hidden="{{showSearchTypeNav}}" >
+               <view wx:for="{{tabNavList}}" wx:key="{{index}}" class="product" @tap="changeSearchType(item)">{{item.text}}</view>
+            </view>
+        </view>
+        <view class="s-input-frame">
+            <view class="c-search-form">
+                <input type="text" class="J_autocomplete" value="123"/>
+            </view>
+            <view class="c-form-btn">
+                <i-icon type="search" size="28" color="#80848f" />icon
+            </view>
+        </view>
+        <i-button type="primary">sfdf</i-button>
+    </view>
+</template>
+<script>
+    import wepy from 'wepy'
+
+    export default class TopSearch extends wepy.component {
+        config = {
+
+        };
+        components = {};
+
+        data = {
+            showSearchTypeNav:true,//是否展示搜索类型 选择列表[产品,车辆],默认不展示
+            currentTab:{ //默认搜索类型
+                name:'product',
+                text:'产品'
+            },
+            tabNavList:[//搜索类型列表数据
+                {
+                    name:'product',
+                    text:'产品'
+                },
+                {
+                    name:'car',
+                    text:'车型'
+                }
+            ]
+        };
+        methods = {
+            //toggle 搜索框 search type list
+            toggleSearchType(){
+                this.showSearchTypeNav = !(this.showSearchTypeNav);
+            },
+            //选择搜索类型
+            changeSearchType:function(searchType){
+                this.currentTabTxt = searchType
+            }
+        };
+
+        events = {};
+    }
+</script>

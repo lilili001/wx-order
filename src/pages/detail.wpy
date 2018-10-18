@@ -1,0 +1,43 @@
+<template>
+
+     <view class="page home">
+          <input type="text" title="test"/>
+     </view>
+
+</template>
+<script>
+    import wepy from 'wepy'
+    import Micon from '@/components/micon'
+    import Input from '@/components/input'
+    export default class Detail extends wepy.page{
+        config = {
+            "usingComponents": {
+                "i-row": "../iview/row/index",
+                "i-col": "../iview/col/index",
+                "i-card": "../iview/card/index",
+                "i-input": "../iview/input/index",
+                "i-panel": "../iview/panel/index"
+            }
+        };
+        components = {
+            micon:Micon,
+            input:Input
+        };
+
+        data = {
+            productList:[]
+        };
+        methods = {
+
+        };
+
+        events = {};
+        onLoad() {
+
+        };
+    }
+</script>
+<style lang="scss">
+
+</style>
+

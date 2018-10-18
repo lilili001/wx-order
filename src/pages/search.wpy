@@ -1,0 +1,46 @@
+<template>
+    <!--*******************************top search: start************************************************-->
+     <topsearch></topsearch>
+    <micon type="arrowdown"></micon>
+    <!--*******************************top search: end************************************************-->
+</template>
+<script>
+    import wepy from 'wepy'
+    import Panel from '@/components/panel'
+    import TopSearch from '@/components/top-search'
+    import ListAnother from '@/components/wepy-list'
+    import Micon from '@/components/micon'
+
+    export default class Search extends wepy.page{
+        config = {
+            "usingComponents": {
+                "i-icon": "../iview/icon/index",
+                "i-button": "../iview/button/index",
+
+            }
+        };
+        components = {
+            topsearch:TopSearch,
+            micon:Micon
+        };
+
+        data = {
+            value1: '',
+            value2: '',
+            value3: '',
+            value4: '输入框已禁用',
+            value5: '',
+            value6: '',
+            value7: ''
+        };
+        methods = {
+            tapInput:function(){
+                console.log(123)
+            }
+        };
+
+        events = {};
+        onLoad() {};
+    }
+</script>
+

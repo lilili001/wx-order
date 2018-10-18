@@ -1,0 +1,50 @@
+<template>
+    <view class="m-class m-icon {{ type === '' ? '' : 'm-icon-' +  type }} {{ custom }}" style="font-size: {{ size }}px; {{ color ? 'color:' + color : '' }}"></view>
+</template>
+<script>
+    import wepy from 'wepy'
+    export default class Micon extends wepy.component{
+        config = {
+            component: true
+        };
+
+        props = {
+            type: {
+                type: String,
+                value: ''
+            },
+            custom: {
+                type: String,
+                value: ''
+            },
+            size: {
+                type: Number,
+                value: 14
+            },
+            color: {
+                type: String,
+                value: ''
+            }
+        }
+    }
+</script>
+<style>
+    @font-face {
+        font-family: 'iconfont-m';
+        src: url(data:application/font-woff;charset=utf-8;base64,d09GRgABAAAAAATMAA0AAAAABwwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABGRlRNAAAEsAAAABoAAAAchYDVcUdERUYAAASQAAAAHgAAAB4AKQALT1MvMgAAAZwAAABDAAAAVjyUSJZjbWFwAAAB8AAAAEYAAAFK5zjpZWdhc3AAAASIAAAACAAAAAj//wADZ2x5ZgAAAkQAAAC7AAAAvAhipfBoZWFkAAABMAAAAC8AAAA2EvvyZWhoZWEAAAFgAAAAHAAAACQH3gOFaG10eAAAAeAAAAAQAAAAEgzAAABsb2NhAAACOAAAAAwAAAAMAEAAXm1heHAAAAF8AAAAHgAAACABEQAwbmFtZQAAAwAAAAFMAAACoI0IGZxwb3N0AAAETAAAADsAAABNd2Rr+njaY2BkYGAA4k+ekm/j+W2+MnCzMIDA9XfhJgj6fwMLA3MDkMvBwAQSBQA5TAqiAHjaY2BkYGBu+N/AEMPCAAJAkpEBFbAAAEcKAm142mNgZGBgYGVQYWBiAAEQyQWEDAz/wXwGAAyDAUIAAHjaY2BkYWCcwMDKwMDUyXSGgYGhH0IzvmYwYuQAijKwMjNgBQFprikMDs9Uny1hbvjfwBDD3MDQCBRmBMkBAOn7DKUAeNpjYYAAFihmOAAAAVoAzXjaY2BgYGaAYBkGRgYQcAHyGMF8FgYNIM0GpBkZmJ6pPlvy/z8DA4SWvCeZAFUPBIxsDHAOIxOQYGJABYwMwx4AAIugC2YAAAAAAAAAAAAAAEAAXnjaY2BiYPjfwMLA3MDAw6DMwKCqx6hux2guxyjOx8jOyghkAgWATKCAkZk5o5iRmYk64/rZ51hYzs2efY6Z+dxsJvd/P0ysGVk/b9/+mRVI+nZZMHJyS4lwFbKcmjnjNAvL6RkzT7HsZGSxnBC85T0r6/stQNJI999vLhEpLgYGRoYDDDeYHZgcGPgYGIRNzIwVjcRE2BnZlNQZ1Q5ICDAZCEjw/HvBowAimCQEJCTALB5GCR4GADaNMN0AeNqNkLtOwzAUhn/3hkglBm6zJwag6WXsSKWyM1SIraROmyqJI8etVLGzs/MMDOw8BisST8HKTzgsXWiiWJ9/H3/HMYBDfEDh9znBpbBCgFvhGvZQCteZPwk3yK/CTbTxLtxi/iUc4ELdCbdxpF5oUI19zs4r2w8rHONKuIYDRMJ15g/CDfKzcBOneBNuMf8UDjBRNeE2ztQjkxEcDKbwHGfQuMeGY8IeFjniavSsQzByZurNTN9vdBLZPLa5Z7xd2UHGUNY75BuK51ghZRPHqZmv0qnbYeO/BROaHS8+qQo0+gjRY2xcmdhc98PeDpJrSvJKtH0HJdY8+ICp53bNz1GSkcYiM/yplKxRVGtLJhHzkFqTG/d3XeV6PvA+1rGzmR6zsUlTqwtnlybyLF5UPQoM0eUbb9nD6hd41IX3xbDbjUUQRjbDN6p+dep42mNgYoAALjDJyIAOWMGiTIxMjMxixamJRckZibmJ6XmZaZWZeenpOYnFxZyJRUX55Sn55XkA31wNOQAAAAAB//8AAgABAAAADAAAABYAAAACAAEAAwAEAAEABAAAAAIAAAAAeNpjYGBgZACCq0vUOUD09XfhJjAaAEDbBkoAAA==) format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+
+    .m-icon {
+        font-family:"iconfont-m" !important;
+        font-size:16px;
+        font-style:normal;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .m-icon-arrowdown:before { content: "\e6a4"; }
+    .m-icon-searchamagnifyingglass:before { content: "\e625"; }
+</style>
