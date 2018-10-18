@@ -15,19 +15,31 @@
                 bindfocus="handleInputFocus"
                 bindblur="handleInputBlur"
         ></textarea>
-        <input
-                wx:else
-                type="{{ type }}"
-                disabled="{{ disabled }}"
-                focus="{{ autofocus }}"
-                value="{{ value }}"
-                placeholder="{{ placeholder }}"
-                maxlength="{{ maxlength }}"
-                class="i-input-input i-cell-bd {{ right ? 'i-input-input-right' : '' }}"
-                placeholder-class="i-input-placeholder"
-                bindinput="handleInputChange"
-                bindfocus="handleInputFocus"
-                bindblur="handleInputBlur"
+        <!--<input-->
+                <!--wx:else-->
+                <!--type="{{ type }}"-->
+                <!--disabled="{{ disabled }}"-->
+                <!--focus="{{ autofocus }}"-->
+                <!--value="{{ value }}"-->
+                <!--placeholder="{{ placeholder }}"-->
+                <!--maxlength="{{ maxlength }}"-->
+                <!--class="i-input-input i-cell-bd {{ right ? 'i-input-input-right' : '' }}"-->
+                <!--placeholder-class="i-input-placeholder"-->
+                <!--bindinput="handleInputChange"-->
+                <!--bindfocus="handleInputFocus"-->
+                <!--bindblur="handleInputBlur"-->
+        <!--/>-->
+
+        <input type="text"
+        wx:else
+               type="{{type}}"
+               focus="{{autofocus}}"
+               value="{{value}}"
+               placeholder="{{placeholder}}"
+               class="i-input-input i-cell-bd {{ right ? 'i-input-input-right' : '' }}"
+               placeholder-class="i-input-placeholder"
+               bindinput="handleInputChange"
+               maxlength="10"
         />
     </view>
 
@@ -42,6 +54,10 @@
         props = {
             title: {
                 type: String
+            },
+            value: {
+                type: String,
+                twoWay: true //自组件修改时会改动伏组件的值
             },
             // text || textarea || password || number
             type: {
@@ -80,18 +96,25 @@
         methods = {
             handleInputChange(event) {
                 const { detail = {} } = event;
-            const { value = '' } = detail;
-            this.setData({ value });
-
-            this.triggerEvent('change', event);
+                const { value = '' } = detail;
+                //this.setData({ value });
+                this.value = value;
+                console.log('input component event:change');
+                this.$apply();
+                this.$emit('change',event);
+                //this.triggerEvent('change', event);
             },
 
             handleInputFocus(event) {
-                this.triggerEvent('focus', event);
+                console.log('focus');
+                this.$emit('focus',event);
+                //this.triggerEvent('focus', event);
             },
 
             handleInputBlur(event) {
-                this.triggerEvent('blur', event);
+                console.log('blur');
+                this.$emit('blur',event);
+                //this.triggerEvent('blur', event);
             }
         }
     }

@@ -1,7 +1,7 @@
 <template>
 
      <view class="page home">
-          <input type="text" title="test"/>
+          <minput type="text"  :value.sync="value" title="test" @change.user="changeText" ></minput>
      </view>
 
 </template>
@@ -21,19 +21,23 @@
         };
         components = {
             micon:Micon,
-            input:Input
+            minput:Input
         };
 
         data = {
+            value:"p-value",
             productList:[]
         };
         methods = {
-
+            changeText:function(e){
+                console.log('111');
+                console.log(e.detail)
+            }
         };
 
         events = {};
         onLoad() {
-
+             this.value="alice"
         };
     }
 </script>

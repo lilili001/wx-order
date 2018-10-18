@@ -47,7 +47,7 @@ Component({
             const { value = '' } = detail;
             this.setData({ value });
 
-            this.triggerEvent('change', event);
+            this.$emit('change');
         },
 
         handleInputFocus(event) {
