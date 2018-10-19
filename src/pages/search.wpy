@@ -9,7 +9,7 @@
     import Panel from '@/components/panel'
     import TopSearch from '@/components/top-search'
     import ListAnother from '@/components/wepy-list'
-    import Micon from '@/components/micon'
+    import Micon from '@/components/base/micon'
 
     export default class Search extends wepy.page{
         config = {

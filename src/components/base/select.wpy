@@ -1,0 +1,50 @@
+<template>
+    <view class="i-class i-cell i-input {{ error ? 'i-input-error' : '' }} {{ mode === 'wrapped' ? 'i-input-wrapped' : '' }}">
+        <view wx:if="{{ title }}" class="i-cell-hd i-input-title">{{ title }}</view>
+        <view class="rt-cell">
+            <view class="text">dsfsdfdfdfdfdd </view>
+            <micon type="arrow" class="icon-right"></micon>
+        </view>
+    </view>
+</template>
+<script>
+    import wepy from 'wepy';
+    import Micon from '@/components/base/micon'
+    export default class Picker extends wepy.component{
+        behaviors = ['wx://form-field'];
+
+        components = {
+            micon:Micon
+        };
+
+        externalClasses = ['i-class'];
+
+        props = {
+            title: {
+                type: String
+            },
+            mode: {
+                type: String,
+                value: 'normal'
+            }
+        };
+    }
+</script>
+<style lang="scss">
+    .rt-cell{
+        position:relative;
+        display:flex;
+        flex-direction: row;
+        justify-content:space-between;
+        width:100%;
+        .text{
+            flex:1;
+            display:block;
+            position:relative;
+        }
+        .icon-right{
+            position:relative;
+            text-align:right;
+        }
+    }
+</style>

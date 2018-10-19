@@ -38,7 +38,7 @@
 </template>
 <script>
     import wepy from 'wepy'
-    import Micon from '@/components/micon'
+    import Micon from '@/components/base/micon'
     export default class Search extends wepy.page{
         config = {
             "usingComponents": {

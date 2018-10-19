@@ -1,14 +1,62 @@
 <template>
 
-     <view class="page home">
-          <minput type="text"  :value.sync="value" title="test" @change.user="changeText" ></minput>
+     <repeat for="{{actions}}" key="index" index="index" item="item">
+           <minput type="text" :title="item.name" :value="item.value" ></minput>
+     </repeat>
+
+     <view class="page detail">
+
+          <i-panel title="贷款信息">
+               <mselect title="车型"></mselect>
+               <mselect title="车辆类型"></mselect>
+          </i-panel>
+
+          <i-panel title="客户信息">
+               <minput type="text"  :value.sync="value" title="test" @change.user="changeText" ></minput>
+               <mselect title="客户类型"></mselect>
+          </i-panel>
+
+          <i-panel title="附件信息">
+               <minput type="text"  :value.sync="value" title="test" @change.user="changeText" ></minput>
+               <mselect title="车型"></mselect>
+          </i-panel>
      </view>
+
+     <view @tap="handleOpenAction">open</view>
+
+     <mpanel title="test panel title">
+          <view slot="content">
+               <minput type="text"  :value.sync="value" title="name" @change.user="changeText" ></minput>
+               <mselect title="车型"></mselect>
+          </view>
+     </mpanel>
+
+     <mcell title="mcell" label="奥迪A3" showLink="true" value="123"  :onlyTapFooter="onlyTapFooter">
+          <view>
+               sdfsdf
+          </view>
+     </mcell>
 
 </template>
 <script>
     import wepy from 'wepy'
-    import Micon from '@/components/micon'
-    import Input from '@/components/input'
+    import Micon from '@/components/base/micon'
+    import Input from '@/components/base/input'
+    import Select from '@/components/base/select'
+
+    import Panel from '@/components/base/panel'
+    import Cell from '@/components/base/cell'
+
+    var obj = {
+        micon:Micon,
+        minput:Input,
+
+        mselect:Select,
+
+        mpanel:Panel,
+        mcell:Cell
+    };
+
     export default class Detail extends wepy.page{
         config = {
             "usingComponents": {
@@ -16,27 +64,57 @@
                 "i-col": "../iview/col/index",
                 "i-card": "../iview/card/index",
                 "i-input": "../iview/input/index",
-                "i-panel": "../iview/panel/index"
+                "i-panel": "../iview/panel/index",
+                "i-cell-group": "../iview/cell-group/index",
+                "i-cell": "../iview/cell/index"
             }
         };
-        components = {
-            micon:Micon,
-            minput:Input
-        };
+         components = {
+             micon:Micon,
+             minput:Input,
 
+             mselect:Select,
+
+             mpanel:Panel,
+             mcell:Cell
+         };
         data = {
             value:"p-value",
-            productList:[]
+            productList:[],
+
+            maskClosable:true,
+            visible:false,
+            actions:[
+                {name:'苹果',value:'apple'},
+                {name:'香蕉',value:'bananer'}
+            ],
+            onlyTapFooter:true
         };
         methods = {
+            change1:function(){
+                console.log('change1');
+            },
             changeText:function(e){
                 console.log('111');
                 console.log(e.detail)
+            },
+            fnClick1:function(data){
+                console.log(data)
+                console.log('click');
+            },
+            handleOpenAction:function(){
+                this.visible = true;
+                console.log('handleopen')
+            },
+            fnCancel:function(){
+                this.visible = false;
             }
         };
 
         events = {};
         onLoad() {
+
+             console.log(this.components)
              this.value="alice"
         };
     }
